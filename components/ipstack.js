@@ -14,18 +14,7 @@ var options = {
   };
   request(options, function (error, response) {
     if (error) throw new Error(error);
-    console.log(response.body)
-    dict={
-        type:response.body.type,
-        city:response.body.city,
-        region_name:response.body.region_name,
-        country_name:response.body.country_name,
-        continent_name:response.body.continent_name,
-        zip:response.body.zip
-    }
-
-
-    return dict;
+       return response.body;
   });
 
 
