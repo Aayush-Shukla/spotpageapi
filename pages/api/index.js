@@ -5,6 +5,7 @@ import getRecent from '../../components/getRecent';
 // import getColor from '../../components/getColor'; //is creating problem in verscel, so removing it
 import getCurrent from '../../components/getCurrent';
 import getToken from '../../components/getToken';
+import getVisitorInfo from '../../components/getVisitorInfo';
 import refreshToken from '../../components/refreshToken';
 export default async function handler(req, res) {
     var data;
@@ -28,6 +29,7 @@ export default async function handler(req, res) {
     }
     // var colors= await getColor(data.albumArt)
     // res.status(200).json({...data,...colors})
+    getVisitorInfo(req,data)
     res.status(200).json(data)
 
 }
