@@ -1,8 +1,8 @@
-var SpotifyWebApi = require('spotify-web-api-node');
+var SpotifyWebApi = require('spotify-web-api-node'); 
 require('dotenv').config()
 var moment = require('moment')
 import getRecent from '../../components/getRecent';
-import getColor from '../../components/getColor';
+// import getColor from '../../components/getColor'; //is creating problem in verscel, so removing it
 import getCurrent from '../../components/getCurrent';
 import getToken from '../../components/getToken';
 import refreshToken from '../../components/refreshToken';
@@ -16,10 +16,8 @@ export default async function handler(req, res) {
     var spotifyApi = new SpotifyWebApi(credentials);
     var creds = await getToken()
     await spotifyApi.setRefreshToken(creds.refreshKey)
-    console.log(Date.now(), creds.validTill)
     if (Date.now() > creds.validTill) {
         var newtoken = await refreshToken(spotifyApi)
-        console.log(newtoken, spotifyApi)
         await spotifyApi.setAccessToken(newtoken)
     } else {
         await spotifyApi.setAccessToken(creds.token)
@@ -28,6 +26,8 @@ export default async function handler(req, res) {
     if (!data) {
         data = await getRecent(spotifyApi)
     }
-    var colors= await getColor(data.albumArt)
-    res.status(200).json({...data,...colors})
+    // var colors= await getColor(data.albumArt)
+    // res.status(200).json({...data,...colors})
+    res.status(200).json(data)
+
 }

@@ -8,7 +8,6 @@
     "start": "next start"
   },
   "dependencies": {
-    "color-thief-node": "^1.0.4",
     "date-fns": "^2.11.1",
     "dotenv": "^10.0.0",
     "gray-matter": "^4.0.2",

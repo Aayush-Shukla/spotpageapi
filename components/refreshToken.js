@@ -10,8 +10,7 @@ const client = new MongoClient(uri, {
     useUnifiedTopology: true
 });
 export default async function refreshToken(spotifyApi) {
-    console.log("refreshing")
-    var response = await spotifyApi.refreshAccessToken()
+     var response = await spotifyApi.refreshAccessToken()
     await client.connect()
     const collection = client.db("spotpage").collection("token");
     var data = await collection.updateOne({
@@ -23,6 +22,5 @@ export default async function refreshToken(spotifyApi) {
         }
     })
     client.close(); //remove this if ,ongoerror
-    console.log(response.body, "hii")
     return response.body.access_token
 }
