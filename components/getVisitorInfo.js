@@ -21,7 +21,8 @@ var info = {...visitorInfo, ...connInfo}
 notifyTelegram(info,data)  // send notification to telegram
 await client.connect()
 const collection = client.db("spotpage").collection("visitor");
-collection.insertOne(info, function(err, res) {  //inserting into mongodb for record
+await collection.insertOne(info, function(err, res) {  //inserting into mongodb for record
     if (err) throw err;  
-    client.close();  })
+  })
+
 }
