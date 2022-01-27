@@ -23,6 +23,7 @@ export default async function getVisitorInfo(req, data) {
             ...visitorInfo,
             ...connInfo
         }
+        console.log("sent")
         notifyTelegram(info, data) // send notification to telegram
         const collection = client.db("spotpage").collection("visitor");
         collection.insertOne(info, function (err, res) { //inserting into mongodb for record

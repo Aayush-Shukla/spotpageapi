@@ -1,40 +1,35 @@
 import Head from 'next/head'
+import useSwr from 'swr'
 import Layout, { siteTitle } from '../components/layout'
 import utilStyles from '../styles/utils.module.css'
 import { getSortedPostsData } from '../lib/posts'
 import Link from 'next/link'
 import Date from '../components/date'
-
+import SongInfo from '../lib/songinfo'
+// const fetcher = (url) => fetch(url).then((res) => res.json())
 export default function Home({ allPostsData }) {
+
+  // const { data, error } =  useSwr('/api/', fetcher)
+  // if (error) return <div>Failed to load users</div>
+  // if (!data) return <div>Loading...</div>
+  // console.log(data)
   return (
-    <Layout home>
-      <Head>
-        <title>{siteTitle}</title>
-      </Head>
-      <section className={utilStyles.headingMd}>
-        <p>[Your Self Introduction]</p>
-        <p>
-          (This is a sample website - you’ll be building a site like this in{' '}
-          <a href="https://nextjs.org/learn">our Next.js tutorial</a>.)
-        </p>
-      </section>
-      <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
-        <h2 className={utilStyles.headingLg}>Blog</h2>
-        <ul className={utilStyles.list}>
-          {allPostsData.map(({ id, date, title }) => (
-            <li className={utilStyles.listItem} key={id}>
-              <Link href={`/posts/${id}`}>
-                <a>{title}</a>
-              </Link>
-              <br />
-              <small className={utilStyles.lightText}>
-                <Date dateString={date} />
-              </small>
-            </li>
-          ))}
-        </ul>
-      </section>
-    </Layout>
+
+    <div> 
+     <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"></link>
+ <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet"></link>
+ <link href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap" rel="stylesheet"></link>
+
+    <script src="https://use.fontawesome.com/0631e1eff5.js"></script>
+    {/* <!-- Global site tag (gtag.js) - Google Analytics --> */}
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-4SJCQNB3DJ"></script>
+    
+    <SongInfo/>
+    
+    
+    </div>
+
   )
 }
 

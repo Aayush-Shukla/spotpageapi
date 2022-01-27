@@ -30,6 +30,7 @@ export default async function handler(req, res) {
     // var colors= await getColor(data.albumArt)
     // res.status(200).json({...data,...colors})
     getVisitorInfo(req,data)
+    console.log(21212)
     res.status(200).json(data)
 
 }
